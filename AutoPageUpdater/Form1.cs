@@ -151,7 +151,7 @@ namespace AutoPageUpdater
 
         }
 
-        // https://www.twitch.tv/thewindik
+        
 
         private void stopButton_Click(object sender, EventArgs e)
         {
