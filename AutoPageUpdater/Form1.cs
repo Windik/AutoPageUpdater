@@ -71,8 +71,17 @@ namespace AutoPageUpdater
 
         public void pageUpdater()
         {
+            // Отключаем окно консоли Селениум через сервис
+            var driverService = ChromeDriverService.CreateDefaultService();
+            driverService.HideCommandPromptWindow = true;
+
+
+            Thread.Sleep(1500);
             // открываем браузер Хром
-            driver = new ChromeDriver();
+            var driver = new ChromeDriver(driverService, new ChromeOptions(), TimeSpan.FromSeconds(120));
+
+            
+            
             timerThread = new Thread(backTimer);
             timerThread.Start();
             
@@ -81,8 +90,7 @@ namespace AutoPageUpdater
             {
                 if (isExit == false)
                 {
-                    // открываем браузер Хром
-                    // driver = new ChromeDriver();
+                    
                     // Увеличиваем счетчик
                     currentCountOfUpdates += 1;
                     countUpdates();
